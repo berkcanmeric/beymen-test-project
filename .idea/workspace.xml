@@ -4,18 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="296d39ef-d66b-48e3-9b08-64e2ebb7a904" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/testinium/driver/DriverFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/testinium/driver/drivers/chromedriver" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/testinium/driver/drivers/geckodriver" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/BasePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/CartPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/HomePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/ProductPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Tests/WebAutomationTest.java" afterDir="false" />
+    <list default="true" id="296d39ef-d66b-48e3-9b08-64e2ebb7a904" name="Changes" comment="&quot;Refactor: Rename CartPage to CartPage and add constructor to extend BasePage&quot;">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/SearchPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/Logs/Selenium.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Base/Hooks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Tests/ApiAutomationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/driver/DriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/driver/DriverFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/BasePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/WebAutomationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/WebAutomationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,23 +58,86 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "JUnit.ApiAutomationTest.executor": "Run",
+    "JUnit.ApiAutomationTest.testTrelloApi.executor": "Run",
+    "JUnit.WebAutomationTest.testSearchFunctionality.executor": "Run",
     "Maven.testiniumCaseStudy [clean].executor": "Run",
+    "Maven.testiniumCaseStudy [compile].executor": "Run",
     "Maven.testiniumCaseStudy [test].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/masomo/IdeaProjects/testiniumCaseStudy",
+    "last_opened_file_path": "/Users/masomo/IdeaProjects/testiniumCaseStudy/src/main/java/com/testinium/driver/drivers",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/testinium/driver/drivers" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/testinium/driver" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ApiAutomationTest.testTrelloApi">
+    <configuration name="ApiAutomationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="testiniumCaseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.ApiAutomationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApiAutomationTest.testTrelloApi" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="testiniumCaseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.ApiAutomationTest" />
+      <option name="METHOD_NAME" value="testTrelloApi" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WebAutomationTest.testSearchFunctionality" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="testiniumCaseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.WebAutomationTest" />
+      <option name="METHOD_NAME" value="testSearchFunctionality" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ApiAutomationTest.testTrelloApi" />
+        <item itemvalue="JUnit.ApiAutomationTest" />
+        <item itemvalue="JUnit.WebAutomationTest.testSearchFunctionality" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -93,12 +156,21 @@
       <option name="project" value="LOCAL" />
       <updated>1723201014802</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="&quot;Refactor: Rename CartPage to CartPage and add constructor to extend BasePage&quot;">
+      <option name="closed" value="true" />
+      <created>1723237178228</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1723237178228</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="&quot;Refactor: Rename CartPage to CartPage and add constructor to extend BasePage&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Refactor: Rename CartPage to CartPage and add constructor to extend BasePage&quot;" />
   </component>
 </project>

@@ -1,29 +1,42 @@
 package com.testinium.pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
-    private final By searchInputLocator = By.id("search-input");
-    private final By searchButtonLocator = By.id("search-button");
-    private final By cartButtonLocator = By.id("cart-button");
-    private final By userAccountLocator = By.id("user-account");
+    private final String url = "http://beymen.com/tr";
+    private final By searchBox= By.cssSelector("input.o-header__search--input");
+    private final By acceptCookiesButton= By.id("onetrust-accept-btn-handler");
+    private final By genderManButton= By.id("genderManButton");
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
-
-    public HomePage enterSearchTerm(String searchTerm) {
-        driver.findElement(searchInputLocator).sendKeys(searchTerm);
-        return this;
+    
+    public void navigate(){
+        driver.get(url);
     }
 
-    public CartPage clickCartButton() {
-        driver.findElement(cartButtonLocator).click();
-        return new CartPage(driver);
+    public void search(String keyword){
+        sendKeys(searchBox, keyword);
     }
 
-    public boolean isUserAccountDisplayed() {
-        return driver.findElement(userAccountLocator).isDisplayed();
+    public void delete() throws InterruptedException {
+        driver.findElement(searchBox).sendKeys("şort");
+        Thread.sleep(2000);
+        driver.findElement(searchBox).sendKeys(Keys.COMMAND + "a");
+        driver.findElement(searchBox).sendKeys(Keys.DELETE);
+        Thread.sleep(2000);
+        driver.findElement(searchBox).sendKeys("gömlek",Keys.ENTER);
+        Thread.sleep(2000);
+    }
+
+    public void acceptCookies(){
+        click(acceptCookiesButton);
+    }
+
+    public void selectGenderMan(){
+        click(genderManButton);
     }
 }

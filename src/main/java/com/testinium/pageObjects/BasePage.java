@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 
 public class BasePage {
-    protected WebDriver driver;
-    protected WebDriverWait wait;
+    public WebDriver driver;
+    public WebDriverWait wait;
     private static final int TIMEOUT = 10;
     private static final int POLLING = 100;
 
@@ -52,6 +52,10 @@ public class BasePage {
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    public String getUrl(){
+        return driver.getCurrentUrl();
     }
 
 }
