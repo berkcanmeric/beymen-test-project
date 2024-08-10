@@ -1,64 +1,65 @@
 package com.testinium.pageObjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-import java.util.Random;
 
 public class SearchPage extends BasePage {
+    private static final String PRODUCT_DETAILS_FILE = "product_details.txt";
 
-    public final By chooseProduct = By.className("m-productCard__desc");
-    public final By addbasket = By.xpath("//button[@id='addBasket']");
-    public final By productdetail = By.className("o-productDetail__description");
-    public final By productprice = By.className("m-price__new");
-    public final By productsize = By.className("-criticalStock");
-    public final By gobasket = By.xpath("(//*[@class='o-header__userInfo--text'])[3]");
-    public final By basketPrice = By.className("m-productPrice__salePrice");
+    private final By productTitle = By.className("o-productCard__content--name");
+    private final By productDetail = By.className("o-productCard__content--desc");
+    private final By productPrice = By.className("m-productCard__newPrice");
 
     public SearchPage(WebDriver driver) {
         super(driver);
     }
 
-    public void findProduct(int index) throws InterruptedException {
-        List<WebElement> products = driver.findElements(chooseProduct);
-
-        if (products.isEmpty()) {
+    public ProductDetails getProductDetails(int index) throws InterruptedException {
+        List<WebElement> productTitles = driver.findElements(productTitle);
+        List<WebElement> productDetails = driver.findElements(productDetail);
+        List<WebElement> productPrices = driver.findElements(productPrice);
+        if (productDetails.isEmpty()) {
             throw new IllegalStateException("No products found on the page.");
         }
 
-        if (index < 0 || index >= products.size()) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + products.size());
+        if (index < 0 || index >= productDetails.size()) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + productDetails.size());
         }
 
-        WebElement element = products.get(index);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        element.click();
-        Thread.sleep(500);
+        WebElement productTitle = productTitles.get(index);
+        WebElement productDetail = productDetails.get(index);
+        WebElement productPrice = productPrices.get(index);
+
+        String title = productTitle.getText();
+        String detail = productDetail.getText();
+        String price = productPrice.getText();
+        productDetail.click();
+        return new ProductDetails(title, detail, price);
     }
 
+    public void saveProductDetails(ProductDetails productDetails) {
+        File file = new File(PRODUCT_DETAILS_FILE);
+        if (file.exists()) {
+            file.delete();
+        }
 
-    public void createTxtFile() throws InterruptedException {
-
-        String productInfo= driver.findElement(productdetail).getText();
-        String productPrice =  driver.findElement(productprice).getText();
-
-        try {
-            FileWriter myWriter = new FileWriter("variables.txt");
-            myWriter.write(productInfo);
-            myWriter.write(" ");
-            myWriter.write(productPrice);
-            myWriter.close();
-            System.out.println("Successfully wrote to the file.");
+        try (FileWriter myWriter = new FileWriter(PRODUCT_DETAILS_FILE, true)) {
+            myWriter.write(productDetails.title() + "\n");
+            myWriter.write(productDetails.detail() + "\n");
+            myWriter.write(productDetails.price() + "\n");
+            System.out.println("Successfully wrote product details to the file.");
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            System.out.println("An error occurred while writing product details to the file.");
             e.printStackTrace();
         }
-        Thread.sleep(2000);
     }
 
+    public record ProductDetails(String title, String detail, String price) {
+    }
 }

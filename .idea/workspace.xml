@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="296d39ef-d66b-48e3-9b08-64e2ebb7a904" name="Changes" comment="&quot;Refactor: Rename CartPage to CartPage and add constructor to extend BasePage&quot;">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/SearchPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/Logs/Selenium.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Base/Hooks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Tests/ApiAutomationTest.java" afterDir="false" />
+    <list default="true" id="296d39ef-d66b-48e3-9b08-64e2ebb7a904" name="Changes" comment="feat(ApiAutomationTest): Implement CRUD operations for Trello API (create, update, delete board, list, card)&#10;build(deps): Add JUnit and RestAssured dependencies for API testing&#10;refactor(ApiAutomationTest): Set up RestAssured base URI in a BeforeClass method&#10;refactor(ApiAutomationTest): Add logging for API responses&#10;test(ApiAutomationTest): Implement testTrelloApi method to test CRUD operations&#10;refactor(ApiAutomationTest): Use RestAssured's statusCode method to verify API response status codes">
+      <change afterPath="$PROJECT_DIR$/product_details.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/driver/DriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/driver/DriverFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/BasePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/ProductPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/ProductPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/SearchPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Tests/WebAutomationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/WebAutomationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +55,8 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "JUnit.ApiAutomationTest.executor": "Run",
     "JUnit.ApiAutomationTest.testTrelloApi.executor": "Run",
+    "JUnit.WebAutomationTest.HomePageTest.executor": "Run",
+    "JUnit.WebAutomationTest.Test1.executor": "Run",
     "JUnit.WebAutomationTest.testSearchFunctionality.executor": "Run",
     "Maven.testiniumCaseStudy [clean].executor": "Run",
     "Maven.testiniumCaseStudy [compile].executor": "Run",
@@ -71,7 +68,8 @@
     "last_opened_file_path": "/Users/masomo/IdeaProjects/testiniumCaseStudy/src/main/java/com/testinium/driver/drivers",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -83,7 +81,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ApiAutomationTest.testTrelloApi">
+  <component name="RunManager" selected="JUnit.WebAutomationTest.Test1">
     <configuration name="ApiAutomationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="testiniumCaseStudy" />
       <extension name="coverage">
@@ -115,6 +113,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WebAutomationTest.HomePageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="testiniumCaseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.WebAutomationTest" />
+      <option name="METHOD_NAME" value="HomePageTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WebAutomationTest.Test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="testiniumCaseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.WebAutomationTest" />
+      <option name="METHOD_NAME" value="Test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WebAutomationTest.testSearchFunctionality" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="testiniumCaseStudy" />
       <extension name="coverage">
@@ -133,6 +163,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WebAutomationTest.Test1" />
+        <item itemvalue="JUnit.WebAutomationTest.HomePageTest" />
         <item itemvalue="JUnit.ApiAutomationTest.testTrelloApi" />
         <item itemvalue="JUnit.ApiAutomationTest" />
         <item itemvalue="JUnit.WebAutomationTest.testSearchFunctionality" />
@@ -164,13 +196,31 @@
       <option name="project" value="LOCAL" />
       <updated>1723237178228</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat(ApiAutomationTest): Implement CRUD operations for Trello API (create, update, delete board, list, card)">
+      <option name="closed" value="true" />
+      <created>1723297891426</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723297891426</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat(ApiAutomationTest): Implement CRUD operations for Trello API (create, update, delete board, list, card)&#10;build(deps): Add JUnit and RestAssured dependencies for API testing&#10;refactor(ApiAutomationTest): Set up RestAssured base URI in a BeforeClass method&#10;refactor(ApiAutomationTest): Add logging for API responses&#10;test(ApiAutomationTest): Implement testTrelloApi method to test CRUD operations&#10;refactor(ApiAutomationTest): Use RestAssured's statusCode method to verify API response status codes">
+      <option name="closed" value="true" />
+      <created>1723297936782</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723297936782</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="&quot;Refactor: Rename CartPage to CartPage and add constructor to extend BasePage&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Refactor: Rename CartPage to CartPage and add constructor to extend BasePage&quot;" />
+    <MESSAGE value="feat(ApiAutomationTest): Implement CRUD operations for Trello API (create, update, delete board, list, card)" />
+    <MESSAGE value="feat(ApiAutomationTest): Implement CRUD operations for Trello API (create, update, delete board, list, card)&#10;build(deps): Add JUnit and RestAssured dependencies for API testing&#10;refactor(ApiAutomationTest): Set up RestAssured base URI in a BeforeClass method&#10;refactor(ApiAutomationTest): Add logging for API responses&#10;test(ApiAutomationTest): Implement testTrelloApi method to test CRUD operations&#10;refactor(ApiAutomationTest): Use RestAssured's statusCode method to verify API response status codes" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ApiAutomationTest): Implement CRUD operations for Trello API (create, update, delete board, list, card)&#10;build(deps): Add JUnit and RestAssured dependencies for API testing&#10;refactor(ApiAutomationTest): Set up RestAssured base URI in a BeforeClass method&#10;refactor(ApiAutomationTest): Add logging for API responses&#10;test(ApiAutomationTest): Implement testTrelloApi method to test CRUD operations&#10;refactor(ApiAutomationTest): Use RestAssured's statusCode method to verify API response status codes" />
   </component>
 </project>

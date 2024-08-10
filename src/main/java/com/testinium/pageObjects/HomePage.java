@@ -6,37 +6,39 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
     private final String url = "http://beymen.com/tr";
-    private final By searchBox= By.cssSelector("input.o-header__search--input");
-    private final By acceptCookiesButton= By.id("onetrust-accept-btn-handler");
-    private final By genderManButton= By.id("genderManButton");
+    public final By searchBox = By.cssSelector("input.o-header__search--input");
+    public final By searchBoxSuggestion = By.cssSelector("input#o-searchSuggestion__input");
+    public final By acceptCookiesButton = By.id("onetrust-accept-btn-handler");
+    public final By genderManButton = By.id("genderManButton");
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
-    
-    public void navigate(){
+
+    public void navigate() {
         driver.get(url);
     }
 
-    public void search(String keyword){
-        sendKeys(searchBox, keyword);
+    public void search(String keyword) {
+       sendKeys(searchBox, keyword);
+    }
+    public void searchSuggestion(String keyword) {
+        sendKeys(searchBoxSuggestion, keyword);
     }
 
-    public void delete() throws InterruptedException {
-        driver.findElement(searchBox).sendKeys("şort");
-        Thread.sleep(2000);
-        driver.findElement(searchBox).sendKeys(Keys.COMMAND + "a");
-        driver.findElement(searchBox).sendKeys(Keys.DELETE);
-        Thread.sleep(2000);
-        driver.findElement(searchBox).sendKeys("gömlek",Keys.ENTER);
-        Thread.sleep(2000);
+    public void delete() {
+        driver.findElement(searchBox).sendKeys(Keys.chord(Keys.COMMAND,"a", Keys.DELETE));
     }
 
-    public void acceptCookies(){
+    public void deleteSuggestion(){
+        driver.findElement(searchBoxSuggestion).sendKeys(Keys.chord(Keys.COMMAND,"a", Keys.DELETE));
+    }
+
+    public void acceptCookies() {
         click(acceptCookiesButton);
     }
 
-    public void selectGenderMan(){
+    public void selectGenderMan() {
         click(genderManButton);
     }
 }
