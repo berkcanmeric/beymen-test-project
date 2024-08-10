@@ -4,66 +4,64 @@ import static com.testinium.driver.DriverFactory.getDriver;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
-import java.time.Duration;
-import java.util.List;
 
 import Base.Hooks;
+import com.testinium.pageObjects.BasePage;
 import com.testinium.pageObjects.HomePage;
 import com.testinium.pageObjects.ProductPage;
 import com.testinium.pageObjects.SearchPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebAutomationTest extends Hooks {
     private static final Logger logger = LogManager.getLogger(WebAutomationTest.class);
 
+    private static final String EXPECTED_URL = "https://www.beymen.com/tr";
+    private static final String URL_ERROR_MESSAGE = "The opened page is not beymen.com\"";
+    private static final String SEARCH_TERM_SHORT = "şort";
+    private static final String SEARCH_TERM_JACKET = "gömlek";
+    private static final int SHORT_WAIT = 2000;
+    private static final int LONG_WAIT = 5000;
+
     @Test
-    public void Test1() throws IOException, InterruptedException {
+    public void Test() throws IOException, InterruptedException {
         HomePage homePage = new HomePage(getDriver());
         SearchPage searchPage = new SearchPage(getDriver());
         ProductPage productPage = new ProductPage(getDriver());
         homePage.navigate();
 
         String actualUrl = homePage.getUrl();
-        String expectedUrl = "https://www.beymen.com/tr";
 
-        assertEquals("The opened page is not beymen.com", expectedUrl, actualUrl);
+        assertEquals(URL_ERROR_MESSAGE, EXPECTED_URL, actualUrl);
 
         homePage.acceptCookies();
         homePage.selectGenderMan();
-        Thread.sleep(2000);
+        Thread.sleep(SHORT_WAIT);
 
-        homePage.search("şort");
+        homePage.search(SEARCH_TERM_SHORT);
         homePage.deleteSuggestion();
-        Thread.sleep(5000);
+        Thread.sleep(LONG_WAIT);
 
-        homePage.searchSuggestion("gömlek" + Keys.ENTER);
-        Thread.sleep(5000);
+        homePage.searchSuggestion(SEARCH_TERM_JACKET + Keys.ENTER);
+        Thread.sleep(LONG_WAIT);
 
-        searchPage.saveProductDetails(searchPage.getProductDetails(3));
-        Assert.assertTrue(getDriver().findElement(productPage.addBasket).isDisplayed());
-        Thread.sleep(2000);
+        searchPage.saveProductDetails(searchPage.getProductDetails(1));
+        Assert.assertTrue(getDriver().findElement(productPage.getChooseSizeLabel()).isDisplayed());
+        Assert.assertTrue(getDriver().findElement(productPage.getAddBasket()).isDisplayed());
+        Thread.sleep(SHORT_WAIT);
+
+        productPage.addToBasket();
+        Thread.sleep(SHORT_WAIT);
+        Assert.assertTrue(getDriver().findElement(productPage.getChooseSizeLabel()).getAttribute("class").contains("hasError"));
+
+        productPage.chooseSize(productPage.SIZE_XL);
+        Assert.assertTrue(productPage.getSizeElement(productPage.SIZE_XL).getAttribute("class").contains("hasError"));
+        Thread.sleep(SHORT_WAIT);
+
 
     }
 
-    @Test
-    public void Test2() throws InterruptedException {
-
-    }
-
-    @Test
-    public void Test3() throws InterruptedException {
-
-    }
 }

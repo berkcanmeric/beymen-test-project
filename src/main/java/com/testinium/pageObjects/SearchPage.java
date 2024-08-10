@@ -11,6 +11,10 @@ import java.util.List;
 
 public class SearchPage extends BasePage {
     private static final String PRODUCT_DETAILS_FILE = "product_details.txt";
+    private static final String NO_PRODUCTS_ERROR = "No products found on the page.";
+    private static final String INDEX_OUT_OF_BOUNDS_ERROR = "Index %d out of bounds for length %d";
+    private static final String PRODUCT_DETAILS_WRITE_SUCCESS = "Successfully wrote product details to the file.";
+    private static final String PRODUCT_DETAILS_WRITE_FAILURE = "An error occurred while writing product details to the file.";
 
     private final By productTitle = By.className("o-productCard__content--name");
     private final By productDetail = By.className("o-productCard__content--desc");
@@ -25,11 +29,11 @@ public class SearchPage extends BasePage {
         List<WebElement> productDetails = driver.findElements(productDetail);
         List<WebElement> productPrices = driver.findElements(productPrice);
         if (productDetails.isEmpty()) {
-            throw new IllegalStateException("No products found on the page.");
+            throw new IllegalStateException(NO_PRODUCTS_ERROR);
         }
 
         if (index < 0 || index >= productDetails.size()) {
-            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + productDetails.size());
+            throw new IndexOutOfBoundsException(String.format(INDEX_OUT_OF_BOUNDS_ERROR, index, productDetails.size()));
         }
 
         WebElement productTitle = productTitles.get(index);
@@ -39,7 +43,7 @@ public class SearchPage extends BasePage {
         String title = productTitle.getText();
         String detail = productDetail.getText();
         String price = productPrice.getText();
-        productDetail.click();
+        click(this.productDetail);
         return new ProductDetails(title, detail, price);
     }
 
@@ -53,9 +57,9 @@ public class SearchPage extends BasePage {
             myWriter.write(productDetails.title() + "\n");
             myWriter.write(productDetails.detail() + "\n");
             myWriter.write(productDetails.price() + "\n");
-            System.out.println("Successfully wrote product details to the file.");
+            System.out.println(PRODUCT_DETAILS_WRITE_SUCCESS);
         } catch (IOException e) {
-            System.out.println("An error occurred while writing product details to the file.");
+            System.out.println(PRODUCT_DETAILS_WRITE_FAILURE);
             e.printStackTrace();
         }
     }
