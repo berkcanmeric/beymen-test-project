@@ -20,6 +20,8 @@ public class BasePage {
     public final String SIZE_L = "L";
     public final String SIZE_XL = "XL";
 
+    private final By goCart = By.cssSelector(".btn.m-notification__button");
+
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT), Duration.ofMillis(POLLING));
@@ -45,6 +47,10 @@ public class BasePage {
 
     public String getUrl(){
         return driver.getCurrentUrl();
+    }
+
+    public void goToCart() {
+        click(goCart);
     }
 
 }

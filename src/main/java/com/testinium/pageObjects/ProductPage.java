@@ -12,8 +12,7 @@ public class ProductPage extends BasePage {
 
     private final By addBasket = By.id("addBasket");
     private final By productSize = By.className("m-variation__item");
-    private final By goBasket = By.xpath("(//*[@class='o-header__userInfo--text'])[3]");
-    private final By productPrice = By.className("m-productPrice__salePrice");
+    private final By productPrice = By.className("m-price__new");
     private final By chooseSizeLabel = By.cssSelector("#sizes .m-variation__label");
 
     public ProductPage(WebDriver driver) {
@@ -49,6 +48,14 @@ public class ProductPage extends BasePage {
             }
         }
         return false;
+    }
+
+    public int getPrice() {
+        waitForElementToBeVisible(productPrice);
+        String priceText = driver.findElement(productPrice).getText().replace("TL", "").trim();
+        priceText=priceText.replace(",00", "");
+        priceText=priceText.replace(",0", "");
+        return Integer.parseInt(priceText);
     }
 
     public By getAddBasket() {
