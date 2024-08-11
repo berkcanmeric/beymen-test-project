@@ -10,6 +10,7 @@ import com.testinium.pageObjects.CartPage;
 import com.testinium.pageObjects.HomePage;
 import com.testinium.pageObjects.ProductPage;
 import com.testinium.pageObjects.SearchPage;
+import com.testinium.utils.ExcelUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -22,12 +23,13 @@ public class WebAutomationTest extends Hooks {
     private static final String EXPECTED_URL = "https://www.beymen.com/tr";
     private static final String URL_ERROR_MESSAGE = "The opened page is not beymen.com\"";
     private static final String PRICE_NOT_EQUAL_ERROR_MESSAGE = "The prices are not equal.";
-    private static final String SEARCH_TERM_SHORT = "şort";
-    private static final String SEARCH_TERM_JACKET = "gömlek";
+    private static String SEARCH_TERM_SHORT;
+    private static String SEARCH_TERM_JACKET;
     private static final String ITEM_QUANTITY = "2";
     private static final String CART_UPDATE_MESSAGE = "Sepetiniz Güncellenmiştir";
     private static final String CART_ITEM_REMOVED_MESSAGE = "Ürün Silindi";
     private static final String CART_UPDATE_ERROR_MESSAGE = "Cart update failed.";
+    private static final String EXCEL_PATH = "src/main/java/resources/Kitap.xlsx";
     private static final int SHORT_WAIT = 2000;
     private static final int LONG_WAIT = 5000;
 
@@ -35,9 +37,21 @@ public class WebAutomationTest extends Hooks {
     public void Test() throws IOException, InterruptedException {
         navigateToHomePage();
         verifyHomePageUrl();
+        readProductsFromExcel();
         searchAndSelectProduct();
         selectSizeAndAddToCart();
         updateCartQuantityAndRemoveItem(verifyPriceInCart());
+    }
+
+    private void readProductsFromExcel() throws IOException {
+        ExcelUtil excelUtil = new ExcelUtil(EXCEL_PATH);
+
+        String firstRowFirstCol = excelUtil.getCellData(0, 0, 0);
+        String secondRowFirstCol = excelUtil.getCellData(0, 1, 0);
+
+        SEARCH_TERM_SHORT = firstRowFirstCol;
+        SEARCH_TERM_JACKET = secondRowFirstCol;
+        excelUtil.closeWorkbook();
     }
 
     private void navigateToHomePage() throws IOException {
@@ -104,7 +118,7 @@ public class WebAutomationTest extends Hooks {
         CartPage cartPage = new CartPage(getDriver());
 
         cartPage.selectQuantity(ITEM_QUANTITY);
-        Thread.sleep(SHORT_WAIT);
+        Thread.sleep(LONG_WAIT);
 
         Assert.assertEquals(CART_UPDATE_ERROR_MESSAGE, cartPage.getCartUpdateMessageText(), CART_UPDATE_MESSAGE);
 

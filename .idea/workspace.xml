@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="296d39ef-d66b-48e3-9b08-64e2ebb7a904" name="Changes" comment="test: test flow completed.">
+    <list default="true" id="296d39ef-d66b-48e3-9b08-64e2ebb7a904" name="Changes" comment="refactor: refactored page object models.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/testinium/utils/ExcelUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/Kitap.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_details.txt" beforeDir="false" afterPath="$PROJECT_DIR$/product_details.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/ProductPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/ProductPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/SearchPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Tests/WebAutomationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/WebAutomationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,6 +77,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/testinium/driver/drivers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/resources" />
       <recent name="$PROJECT_DIR$/src/main/java/com/testinium/driver" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -236,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723369070369</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="refactor: refactored page object models.">
+      <option name="closed" value="true" />
+      <created>1723371820536</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1723371820536</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -248,6 +257,7 @@
     <MESSAGE value="fix: Fix issue with product details not being saved correctly" />
     <MESSAGE value="refactor: tests and page objects have been updated" />
     <MESSAGE value="test: test flow completed." />
-    <option name="LAST_COMMIT_MESSAGE" value="test: test flow completed." />
+    <MESSAGE value="refactor: refactored page object models." />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: refactored page object models." />
   </component>
 </project>
