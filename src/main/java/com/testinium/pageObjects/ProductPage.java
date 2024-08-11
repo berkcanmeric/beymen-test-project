@@ -1,6 +1,7 @@
 package com.testinium.pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -15,6 +16,8 @@ public class ProductPage extends BasePage {
     private static final String PRODUCT_FILE = "product_details.txt";
     private static final String PRODUCT_WRITE_SUCCESS = "Successfully wrote product details to the file.";
     private static final String PRODUCT_WRITE_FAILURE = "An error occurred while writing product details to the file.";
+    private static final String PRODUCT_SIZE_DISABLED_ERROR_MESSAGE = "The selected size is disabled.";
+    private static final String PRODUCT_SIZE_NOT_FOUND_ERROR_MESSAGE = "Size not found.";
 
     private final By addBasket = By.id("addBasket");
 
@@ -44,11 +47,22 @@ public class ProductPage extends BasePage {
         if (!isValidSize(size)) {
             throw new IllegalArgumentException(ERROR_INVALID_SIZE);
         }
-
-        return driver.findElements(productSize).stream()
+       WebElement sizeElement= driver.findElements(productSize).stream()
                 .filter(e -> e.getText().equalsIgnoreCase(size))
                 .findFirst()
                 .orElse(null);
+
+        if (sizeElement != null) {
+            String classAttribute = sizeElement.getAttribute("class");
+
+            if (classAttribute != null && classAttribute.contains("disabled")) {
+                throw new IllegalStateException(PRODUCT_SIZE_DISABLED_ERROR_MESSAGE);
+            }
+
+            return sizeElement;
+        } else {
+            throw new NoSuchElementException(PRODUCT_SIZE_NOT_FOUND_ERROR_MESSAGE);
+        }
     }
 
     private boolean isValidSize(String size) {

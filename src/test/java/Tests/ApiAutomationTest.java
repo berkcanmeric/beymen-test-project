@@ -6,6 +6,8 @@ import io.restassured.response.Response;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static io.restassured.RestAssured.given;
 
 public class ApiAutomationTest {
@@ -23,10 +25,16 @@ public class ApiAutomationTest {
     public void testTrelloApi() {
         String boardId = createBoard("Testinium");
         String listId = createList("test1", boardId);
-        String cardId = createCard(listId);
+        String card1Id = createCard(listId);
+        String card2Id = createCard(listId);
 
-        updateCard(cardId);
-        deleteCard(cardId);
+        String[] cardIds = {card1Id, card2Id};
+        Random random = new Random();
+        int randomIndex = random.nextInt(cardIds.length);
+
+        updateCard(cardIds[randomIndex]);
+        deleteCard(card1Id);
+        deleteCard(card2Id);
         deleteBoard(boardId);
     }
 

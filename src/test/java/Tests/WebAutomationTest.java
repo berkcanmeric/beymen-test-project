@@ -94,8 +94,8 @@ public class WebAutomationTest extends Hooks {
         Thread.sleep(SHORT_WAIT);
         Assert.assertTrue(getDriver().findElement(productPage.getChooseSizeLabel()).getAttribute("class").contains("hasError"));
 
-        productPage.chooseSize(productPage.SIZE_XL);
-        Assert.assertTrue(productPage.getSizeElement(productPage.SIZE_XL).getAttribute("class").contains("-active"));
+        productPage.chooseSize(productPage.SIZE_S);
+        Assert.assertTrue(productPage.getSizeElement(productPage.SIZE_S).getAttribute("class").contains("-active"));
         Thread.sleep(SHORT_WAIT);
 
         productPage.addToBasket();
