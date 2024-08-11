@@ -33,19 +33,29 @@ public class WebAutomationTest extends Hooks {
 
     @Test
     public void Test() throws IOException, InterruptedException {
+        navigateToHomePage();
+        verifyHomePageUrl();
+        searchAndSelectProduct();
+        selectSizeAndAddToCart();
+        updateCartQuantityAndRemoveItem(verifyPriceInCart());
+    }
+
+    private void navigateToHomePage() throws IOException {
         HomePage homePage = new HomePage(getDriver());
-        SearchPage searchPage = new SearchPage(getDriver());
-        ProductPage productPage = new ProductPage(getDriver());
-        CartPage cartPage = new CartPage(getDriver());
         homePage.navigate();
-
-        String actualUrl = homePage.getUrl();
-
-        assertEquals(URL_ERROR_MESSAGE, EXPECTED_URL, actualUrl);
-
         homePage.acceptCookies();
         homePage.selectGenderMan();
-        Thread.sleep(SHORT_WAIT);
+    }
+
+    private void verifyHomePageUrl() {
+        HomePage homePage = new HomePage(getDriver());
+        String actualUrl = homePage.getUrl();
+        assertEquals(URL_ERROR_MESSAGE, EXPECTED_URL, actualUrl);
+    }
+
+    private void searchAndSelectProduct() throws InterruptedException {
+        HomePage homePage = new HomePage(getDriver());
+        SearchPage searchPage = new SearchPage(getDriver());
 
         homePage.search(SEARCH_TERM_SHORT);
         homePage.deleteSuggestion();
@@ -54,9 +64,16 @@ public class WebAutomationTest extends Hooks {
         homePage.searchSuggestion(SEARCH_TERM_JACKET + Keys.ENTER);
         Thread.sleep(LONG_WAIT);
 
-        searchPage.saveProductDetails(searchPage.getProductDetails(1));
+        searchPage.goProductPage(1);
+    }
+
+    private void selectSizeAndAddToCart() throws InterruptedException {
+        ProductPage productPage = new ProductPage(getDriver());
         Assert.assertTrue(getDriver().findElement(productPage.getChooseSizeLabel()).isDisplayed());
         Assert.assertTrue(getDriver().findElement(productPage.getAddBasket()).isDisplayed());
+        Thread.sleep(LONG_WAIT);
+
+        productPage.saveProduct(productPage.getProduct());
         Thread.sleep(SHORT_WAIT);
 
         productPage.addToBasket();
@@ -69,17 +86,28 @@ public class WebAutomationTest extends Hooks {
 
         productPage.addToBasket();
         Thread.sleep(SHORT_WAIT);
+    }
+
+    private int verifyPriceInCart() throws InterruptedException {
+        ProductPage productPage = new ProductPage(getDriver());
+        CartPage cartPage = new CartPage(getDriver());
 
         int productPrice = productPage.getPrice();
         productPage.goToCart();
         Thread.sleep(LONG_WAIT);
 
         Assert.assertEquals(PRICE_NOT_EQUAL_ERROR_MESSAGE, productPrice, cartPage.getPrice());
+        return productPrice;
+    }
+
+    private void updateCartQuantityAndRemoveItem(int productPrice) throws InterruptedException {
+        CartPage cartPage = new CartPage(getDriver());
 
         cartPage.selectQuantity(ITEM_QUANTITY);
         Thread.sleep(SHORT_WAIT);
 
         Assert.assertEquals(CART_UPDATE_ERROR_MESSAGE, cartPage.getCartUpdateMessageText(), CART_UPDATE_MESSAGE);
+
         Assert.assertEquals(PRICE_NOT_EQUAL_ERROR_MESSAGE, productPrice * 2, cartPage.getPrice());
 
         cartPage.removeItemFromCart();
@@ -87,5 +115,6 @@ public class WebAutomationTest extends Hooks {
 
         Assert.assertEquals(CART_UPDATE_ERROR_MESSAGE, cartPage.getCartUpdateMessageText(), CART_ITEM_REMOVED_MESSAGE);
     }
+
 
 }

@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="296d39ef-d66b-48e3-9b08-64e2ebb7a904" name="Changes" comment="refactor: tests and page objects have been updated">
+    <list default="true" id="296d39ef-d66b-48e3-9b08-64e2ebb7a904" name="Changes" comment="test: test flow completed.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/BasePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/CartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/CartPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product_details.txt" beforeDir="false" afterPath="$PROJECT_DIR$/product_details.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/ProductPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/ProductPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/testinium/pageObjects/SearchPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Tests/WebAutomationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/WebAutomationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -228,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723333605627</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="test: test flow completed.">
+      <option name="closed" value="true" />
+      <created>1723369070369</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1723369070369</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -239,6 +247,7 @@
     <MESSAGE value="feat(ApiAutomationTest): Implement CRUD operations for Trello API (create, update, delete board, list, card)&#10;build(deps): Add JUnit and RestAssured dependencies for API testing&#10;refactor(ApiAutomationTest): Set up RestAssured base URI in a BeforeClass method&#10;refactor(ApiAutomationTest): Add logging for API responses&#10;test(ApiAutomationTest): Implement testTrelloApi method to test CRUD operations&#10;refactor(ApiAutomationTest): Use RestAssured's statusCode method to verify API response status codes" />
     <MESSAGE value="fix: Fix issue with product details not being saved correctly" />
     <MESSAGE value="refactor: tests and page objects have been updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: tests and page objects have been updated" />
+    <MESSAGE value="test: test flow completed." />
+    <option name="LAST_COMMIT_MESSAGE" value="test: test flow completed." />
   </component>
 </project>
